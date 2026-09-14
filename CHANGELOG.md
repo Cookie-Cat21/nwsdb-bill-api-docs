@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-14
+
+- **Changed** `get_tariff_adjustment`
+
 ## 2026-07-20
 
 - **Changed** `bill_calculator` (POST `/api_nwsdb/bill/BillCalculator` · access `json_api`)

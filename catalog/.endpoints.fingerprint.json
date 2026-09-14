@@ -1,5 +1,5 @@
 {
-  "sha256": "1982af64644cd2034e5f012fa531e02bc2b2de617de714ace0531cb34a79655d",
+  "sha256": "cae5662e4a8a6bbfb91a58a7172d84def207b2843992741086094e661315b3ae",
   "endpoint_count": 2,
   "endpoints": {
     "bill_calculator": {
@@ -17,11 +17,10 @@
       "method": "GET",
       "path": "/api_nwsdb/bill/getTariffAdjustment",
       "url": "https://ebis.waterboard.lk/api_nwsdb/bill/getTariffAdjustment",
-      "status": "live",
-      "access": "json_api",
-      "summary": "Tariff adjustment metadata.",
+      "status": "parked",
+      "access": "parked",
+      "summary": "PARK \u2014 404s (checked case variants too). Sibling bill_calculator endpoint on the same host still works fine, so this is a genuinely moved/ removed path, not a host outage. ebis.waterboard.lk is an API-only host with no browsable frontend to find the real path from; needs the actual consumer frontend (main waterboard.lk site) inspected for the correct call, not attempted here. Checked 2026-09-14.",
       "pagination": null
     }
-  },
-  "updated": "2026-07-20"
+  }
 }
