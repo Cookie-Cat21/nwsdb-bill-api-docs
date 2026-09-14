@@ -1,5 +1,5 @@
 {
-  "sha256": "cae5662e4a8a6bbfb91a58a7172d84def207b2843992741086094e661315b3ae",
+  "sha256": "b97d941431e89de1a3645337849369b13e5314bf02dfe8b5c3ab6048bbae704e",
   "endpoint_count": 2,
   "endpoints": {
     "bill_calculator": {
@@ -14,12 +14,12 @@
     },
     "get_tariff_adjustment": {
       "id": "get_tariff_adjustment",
-      "method": "GET",
+      "method": "POST",
       "path": "/api_nwsdb/bill/getTariffAdjustment",
       "url": "https://ebis.waterboard.lk/api_nwsdb/bill/getTariffAdjustment",
-      "status": "parked",
-      "access": "parked",
-      "summary": "PARK \u2014 404s (checked case variants too). Sibling bill_calculator endpoint on the same host still works fine, so this is a genuinely moved/ removed path, not a host outage. ebis.waterboard.lk is an API-only host with no browsable frontend to find the real path from; needs the actual consumer frontend (main waterboard.lk site) inspected for the correct call, not attempted here. Checked 2026-09-14.",
+      "status": "live",
+      "access": "json_api",
+      "summary": "UN-PARKED 2026-09-14 \u2014 found the real frontend at ebis.waterboard.lk/DirectPay/#/BillCalculator (linked from waterboard.lk), inspected its JS bundle: this is actually a POST with a JSON body {FromDate, ToDate, Consumption}, not a GET with no body. That mismatch, not a moved path, was the whole bug. Verified working with a stateless curl request.",
       "pagination": null
     }
   }
