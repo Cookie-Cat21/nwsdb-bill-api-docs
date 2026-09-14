@@ -19,14 +19,17 @@ endpoints:
     NoOfHouses: 1
   access: json_api
 - id: get_tariff_adjustment
-  method: GET
+  method: POST
   url: https://ebis.waterboard.lk/api_nwsdb/bill/getTariffAdjustment
   path: /api_nwsdb/bill/getTariffAdjustment
-  summary: 'PARK — 404s (checked case variants too). Sibling bill_calculator
-    endpoint on the same host still works fine, so this is a genuinely moved/
-    removed path, not a host outage. ebis.waterboard.lk is an API-only host
-    with no browsable frontend to find the real path from; needs the actual
-    consumer frontend (main waterboard.lk site) inspected for the correct
-    call, not attempted here. Checked 2026-09-14.'
-  status: parked
-  access: parked
+  summary: 'UN-PARKED 2026-09-14 — found the real frontend at
+    ebis.waterboard.lk/DirectPay/#/BillCalculator (linked from waterboard.lk),
+    inspected its JS bundle: this is actually a POST with a JSON body
+    {FromDate, ToDate, Consumption}, not a GET with no body. That mismatch,
+    not a moved path, was the whole bug. Verified working with a stateless
+    curl request.'
+  body_json:
+    FromDate: "2026-08-01"
+    ToDate: "2026-08-30"
+    Consumption: 20
+  access: json_api
